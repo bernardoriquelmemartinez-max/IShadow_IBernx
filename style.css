@@ -287,3 +287,71 @@ padding:40px 5%;
 
 
 }
+.custom-cursor {
+
+position:fixed;
+
+width:12px;
+height:12px;
+
+background:white;
+
+border-radius:50%;
+
+pointer-events:none;
+
+z-index:9999;
+
+box-shadow:
+0 0 15px white;
+
+transform:translate(-50%,-50%);
+
+}
+
+
+
+.particle {
+
+position:fixed;
+
+bottom:-20px;
+
+width:5px;
+
+height:5px;
+
+background:#00ffff;
+
+border-radius:50%;
+
+opacity:.7;
+
+animation: rise linear forwards;
+
+}
+
+
+
+@keyframes rise {
+
+
+from{
+
+transform:translateY(0);
+
+opacity:1;
+
+}
+
+
+to{
+
+transform:translateY(-110vh);
+
+opacity:0;
+
+}
+
+
+}
