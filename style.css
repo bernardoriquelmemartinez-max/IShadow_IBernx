@@ -1,160 +1,205 @@
+/*======================================================
+                ISHADOW_IBERNX PORTFOLIO
+======================================================*/
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Arial',sans-serif;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
 }
-
 
 html{
     scroll-behavior:smooth;
 }
 
+:root{
+
+    --primary:#9b3dff;
+    --secondary:#00d4ff;
+    --background:#05000d;
+    --background2:#120025;
+    --card:rgba(255,255,255,.08);
+    --border:rgba(255,255,255,.12);
+
+    --shadow-purple:
+    0 0 20px rgba(155,61,255,.45);
+
+    --shadow-blue:
+    0 0 20px rgba(0,212,255,.45);
+
+}
 
 body{
 
-    color:white;
-    min-height:100vh;
+    color:#fff;
     overflow-x:hidden;
-
+    min-height:100vh;
 
     background:
-    radial-gradient(circle at 20% 20%, rgba(177,0,255,.35), transparent 35%),
-    radial-gradient(circle at 80% 80%, rgba(0,200,255,.30), transparent 35%),
+    radial-gradient(circle at 10% 20%,rgba(155,61,255,.35),transparent 30%),
+    radial-gradient(circle at 90% 80%,rgba(0,212,255,.25),transparent 35%),
     linear-gradient(
-        135deg,
-        #05000f,
-        #16002f,
-        #000
+    135deg,
+    var(--background),
+    var(--background2),
+    #000
     );
-
 
     background-size:200% 200%;
 
     animation:
-    backgroundMove 12s infinite alternate;
+    gradientMove 12s ease infinite;
 
 }
 
+@keyframes gradientMove{
 
+0%{
 
-@keyframes backgroundMove{
-
-from{
-    background-position:0% 50%;
-}
-
-to{
-    background-position:100% 50%;
-}
+background-position:0% 50%;
 
 }
 
+50%{
 
+background-position:100% 50%;
 
+}
 
+100%{
 
+background-position:0% 50%;
 
-/* NAV */
+}
 
+}
+
+/*======================================================
+                        NAVBAR
+======================================================*/
 
 nav{
 
-position:sticky;
+position:fixed;
 
 top:0;
+left:0;
 
-z-index:1000;
-
+width:100%;
 
 display:flex;
 
 justify-content:space-between;
-
 align-items:center;
 
+padding:18px 8%;
 
-padding:20px 8%;
+background:rgba(0,0,0,.45);
 
-
-background:
-rgba(0,0,0,.65);
-
-
-backdrop-filter:blur(15px);
-
+backdrop-filter:blur(18px);
 
 border-bottom:
-1px solid #b100ff;
+1px solid rgba(255,255,255,.08);
+
+z-index:999;
+
+transition:.35s;
 
 }
 
+nav:hover{
 
+background:rgba(0,0,0,.70);
+
+}
 
 .logo{
 
-font-size:26px;
+font-size:30px;
 
-font-weight:bold;
+font-weight:700;
 
-color:#b100ff;
+letter-spacing:1px;
 
+color:var(--primary);
 
 text-shadow:
-0 0 20px #b100ff;
+
+0 0 18px var(--primary);
 
 }
-
-
 
 .links{
 
 display:flex;
 
-flex-wrap:wrap;
+align-items:center;
 
-justify-content:center;
+gap:24px;
 
 }
-
-
 
 .links a{
 
-color:white;
-
 text-decoration:none;
 
-margin-left:20px;
+color:white;
 
-transition:.3s;
+font-size:15px;
+
+font-weight:600;
+
+position:relative;
+
+transition:.35s;
 
 }
 
+.links a::after{
 
+content:"";
+
+position:absolute;
+
+left:0;
+bottom:-8px;
+
+width:0%;
+
+height:2px;
+
+background:
+
+linear-gradient(
+90deg,
+var(--primary),
+var(--secondary)
+);
+
+transition:.35s;
+
+}
 
 .links a:hover{
 
-color:#00c8ff;
-
-
-text-shadow:
-0 0 15px #00c8ff;
+color:var(--secondary);
 
 }
 
+.links a:hover::after{
 
+width:100%;
 
+}
 
-
-
-
-/* HERO */
-
+/*======================================================
+                        HERO
+======================================================*/
 
 .hero{
 
-min-height:90vh;
+min-height:100vh;
 
 display:flex;
 
@@ -162,12 +207,12 @@ justify-content:center;
 
 align-items:center;
 
+padding:
 
-padding:70px 10%;
+120px 8%
+80px;
 
 }
-
-
 
 .profile-card{
 
@@ -177,147 +222,166 @@ align-items:center;
 
 gap:60px;
 
+width:100%;
 
-max-width:1150px;
+max-width:1200px;
 
-
-padding:50px;
-
-
-background:
-
-rgba(255,255,255,.09);
-
-
-border:
-
-1px solid rgba(177,0,255,.6);
-
+padding:55px;
 
 border-radius:35px;
 
+background:
+
+rgba(255,255,255,.07);
 
 backdrop-filter:blur(20px);
 
+border:
+
+1px solid rgba(255,255,255,.10);
 
 box-shadow:
 
-0 0 60px rgba(177,0,255,.35);
+0 20px 60px rgba(0,0,0,.45),
+0 0 40px rgba(155,61,255,.25);
 
+transition:.4s;
 
 }
 
+.profile-card:hover{
 
+transform:
+
+translateY(-8px);
+
+box-shadow:
+
+0 30px 80px rgba(0,0,0,.55),
+0 0 50px rgba(0,212,255,.30);
+
+}
 
 .profile-image{
+
+flex:1;
 
 display:flex;
 
 justify-content:center;
 
+align-items:center;
+
 }
-
-
 
 .avatar{
 
-width:240px;
-
-height:240px;
-
+width:270px;
+height:270px;
 
 border-radius:50%;
 
-
 object-fit:cover;
-
 
 border:
 
-5px solid #b100ff;
+5px solid var(--primary);
 
+box-shadow:
+
+0 0 35px rgba(155,61,255,.55);
 
 animation:
 
-avatarGlow 3s infinite;
+avatarGlow 4s infinite;
+
+transition:.4s;
 
 }
 
+.avatar:hover{
 
+transform:
+
+scale(1.05);
+
+}
 
 @keyframes avatarGlow{
 
 0%{
 
 box-shadow:
-0 0 20px #b100ff;
+
+0 0 25px rgba(155,61,255,.45);
 
 }
-
 
 50%{
 
 box-shadow:
-0 0 70px #00c8ff;
+
+0 0 60px rgba(0,212,255,.65);
 
 }
-
 
 100%{
 
 box-shadow:
-0 0 20px #b100ff;
+
+0 0 25px rgba(155,61,255,.45);
 
 }
 
 }
 
+.profile-info{
 
+flex:1;
 
-
+}
 
 .profile-info h1{
 
-font-size:60px;
+font-size:65px;
 
+margin-bottom:10px;
+
+line-height:1.1;
 
 text-shadow:
 
-0 0 30px #b100ff;
+0 0 25px rgba(155,61,255,.7);
 
 }
-
-
 
 .profile-info h2{
 
-color:#b100ff;
-
-margin:15px 0;
-
 font-size:28px;
 
+font-weight:600;
+
+margin-bottom:20px;
+
+color:var(--primary);
+
 }
-
-
 
 .profile-info p{
 
 font-size:18px;
 
-line-height:1.8;
+line-height:1.9;
 
-color:#ddd;
+color:#d8d8d8;
+
+max-width:650px;
 
 }
 
-
-
-
-
-
-/* BOTONES */
-
+/*======================================================
+                      BOTONES
+======================================================*/
 
 .buttons{
 
@@ -327,172 +391,178 @@ display:flex;
 
 gap:20px;
 
+flex-wrap:wrap;
+
 }
-
-
 
 .buttons a{
 
-padding:15px 30px;
+padding:15px 34px;
 
-border-radius:30px;
+border-radius:40px;
 
+text-decoration:none;
+
+font-weight:700;
+
+color:white;
 
 background:
 
 linear-gradient(
-45deg,
-#8b00ff,
-#00c8ff
+135deg,
+var(--primary),
+var(--secondary)
 );
 
-
-color:white;
-
-text-decoration:none;
-
-font-weight:bold;
-
-
-transition:.4s;
-
-
 box-shadow:
-0 0 20px #8b00ff;
+
+0 10px 25px rgba(155,61,255,.30);
+
+transition:.35s;
 
 }
-
-
 
 .buttons a:hover{
 
-transform:translateY(-8px);
+transform:
 
+translateY(-6px)
+scale(1.03);
 
 box-shadow:
-0 0 40px #00c8ff;
 
-}
+0 18px 40px rgba(0,212,255,.35);
 
-
-
-
-
-
-
-/* SECCIONES */
-
+}/*======================================================
+                    SECCIONES
+======================================================*/
 
 section{
 
-padding:90px 10%;
+padding:100px 9%;
 
-text-align:center;
+position:relative;
 
 }
-
-
 
 section h2{
 
-font-size:40px;
+font-size:45px;
 
 margin-bottom:50px;
 
+text-align:center;
 
-color:#b100ff;
+font-weight:700;
 
+color:white;
 
 text-shadow:
-0 0 20px #b100ff;
+
+0 0 20px rgba(155,61,255,.45);
 
 }
 
+section h2::after{
 
+content:"";
 
+display:block;
 
+margin:18px auto 0;
 
+width:90px;
 
+height:4px;
 
+border-radius:50px;
 
-/* STATS */
+background:
 
+linear-gradient(
+90deg,
+var(--primary),
+var(--secondary)
+);
+
+}
+
+/*======================================================
+                    ESTADISTICAS
+======================================================*/
 
 .stats{
 
 display:grid;
 
 grid-template-columns:
-repeat(auto-fit,minmax(220px,1fr));
 
+repeat(auto-fit,minmax(220px,1fr));
 
 gap:30px;
 
 }
 
-
-
 .stat-card{
-
 
 padding:35px;
 
+border-radius:25px;
 
 background:
 
-rgba(255,255,255,.08);
-
-
-border:
-
-1px solid #8b00ff;
-
-
-border-radius:25px;
-
+rgba(255,255,255,.06);
 
 backdrop-filter:blur(15px);
 
+border:
 
-transition:.4s;
+1px solid rgba(255,255,255,.08);
 
+transition:.35s;
+
+cursor:pointer;
 
 }
-
-
 
 .stat-card:hover{
 
 transform:
 
-translateY(-15px)
-scale(1.05);
-
+translateY(-12px);
 
 box-shadow:
 
-0 0 40px #b100ff;
+0 0 40px rgba(155,61,255,.35);
+
+border-color:
+
+var(--secondary);
 
 }
-
-
 
 .stat-card h2{
 
-font-size:50px;
+font-size:52px;
 
-margin:0;
+margin-bottom:10px;
+
+color:white;
 
 }
 
+.stat-card p{
 
+color:#d4d4d4;
 
+font-size:17px;
 
+}
 
-
-
-/* CARDS */
-
+/*======================================================
+                    GRID GENERAL
+======================================================*/
 
 .cards{
 
@@ -500,172 +570,426 @@ display:grid;
 
 grid-template-columns:
 
-repeat(auto-fit,minmax(250px,1fr));
-
+repeat(auto-fit,minmax(300px,1fr));
 
 gap:30px;
 
 }
 
+/*======================================================
+                    TARJETAS
+======================================================*/
 
-
-.card,
-.mission-box{
-
-
-background:
-
-rgba(255,255,255,.08);
-
-
-border:
-
-1px solid rgba(177,0,255,.5);
-
+.card{
 
 padding:35px;
 
+border-radius:25px;
 
-border-radius:30px;
+background:
 
+rgba(255,255,255,.07);
 
 backdrop-filter:blur(15px);
 
+border:
 
-transition:.5s;
+1px solid rgba(255,255,255,.08);
 
+transition:.35s;
+
+position:relative;
+
+overflow:hidden;
 
 opacity:0;
 
 transform:
-translateY(50px);
+
+translateY(40px);
 
 }
 
+.card.show{
 
-
-.show{
-
-opacity:1 !important;
+opacity:1;
 
 transform:
-translateY(0) !important;
+
+translateY(0);
 
 }
 
+.card::before{
 
+content:"";
 
-.card:hover,
-.mission-box:hover{
+position:absolute;
 
+left:-120%;
+
+top:0;
+
+width:120%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.08),
+transparent
+);
+
+transition:.6s;
+
+}
+
+.card:hover::before{
+
+left:120%;
+
+}
+
+.card:hover{
 
 transform:
-translateY(-15px);
 
-
-border-color:#00c8ff;
-
+translateY(-12px);
 
 box-shadow:
 
-0 0 45px #00c8ff;
+0 0 40px rgba(0,212,255,.25);
+
+border-color:
+
+var(--secondary);
 
 }
 
-
-
 .card h3{
 
+font-size:24px;
+
+margin-bottom:15px;
+
+color:white;
+
+}
+
+.card h4{
+
+margin-bottom:15px;
+
+font-size:18px;
+
+color:
+
+var(--secondary);
+
+font-weight:600;
+
+}
+
+.card p{
+
+font-size:16px;
+
+line-height:1.8;
+
+color:#d8d8d8;
+
+}
+
+/*======================================================
+                    MISSION BOX
+======================================================*/
+
+.mission-box{
+
+max-width:950px;
+
+margin:auto;
+
+padding:45px;
+
+border-radius:30px;
+
+background:
+
+rgba(255,255,255,.07);
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+backdrop-filter:blur(15px);
+
+transition:.35s;
+
+}
+
+.mission-box:hover{
+
+transform:
+
+translateY(-10px);
+
+box-shadow:
+
+0 0 35px rgba(155,61,255,.30);
+
+}
+
+.mission-box p{
+
+font-size:18px;
+
+line-height:2;
+
+color:#dddddd;
+
+}
+
+/*======================================================
+            GESTION Y LIDERAZGO
+======================================================*/
+
+#gestion .card{
+
+text-align:left;
+
+padding:40px;
+
+}
+
+#gestion .card h3{
+
+font-size:26px;
+
+margin-bottom:18px;
+
+}
+
+#gestion .card p{
+
+line-height:1.9;
+
+}
+
+/*======================================================
+                EXPERIENCIA
+======================================================*/
+
+#experiencia .card{
+
+min-height:260px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:flex-start;
+
+}
+
+#experiencia .card h3{
+
 font-size:25px;
+
+margin-bottom:8px;
+
+}
+
+#experiencia .card h4{
 
 margin-bottom:20px;
 
 }
 
+#experiencia .card:hover{
 
+transform:
 
-.card p,
-.mission-box p{
+translateY(-14px)
+scale(1.02);
 
-color:#ddd;
+}
+
+/*======================================================
+                HABILIDADES
+======================================================*/
+
+#habilidades .card{
+
+text-align:center;
+
+}
+
+#habilidades .card h3{
+
+font-size:23px;
+
+margin-bottom:18px;
+
+}
+
+#habilidades .card p{
 
 line-height:1.8;
 
+}/*======================================================
+                    RANGOS STAFF
+======================================================*/
+
+#rangos .cards{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:30px;
+
+margin-top:20px;
+
 }
 
+#rangos .card{
 
+text-align:center;
 
+min-height:240px;
 
+display:flex;
 
+flex-direction:column;
 
+justify-content:center;
 
+}
 
-/* CONTACTO */
+#rangos .card h3{
 
+font-size:28px;
+
+margin-bottom:18px;
+
+color:white;
+
+}
+
+#rangos .card p{
+
+font-size:17px;
+
+line-height:1.9;
+
+color:#d9d9d9;
+
+}
+
+/*======================================================
+                    CONTACTO
+======================================================*/
 
 #contacto{
 
-padding-bottom:120px;
+padding-bottom:140px;
 
 }
 
+#contacto .mission-box{
 
+max-width:750px;
+
+margin:auto;
+
+text-align:center;
+
+}
 
 #contacto b{
 
-color:#b100ff;
+font-size:28px;
 
-font-size:25px;
+color:var(--secondary);
+
+text-shadow:
+
+0 0 18px rgba(0,212,255,.45);
 
 }
 
+#contacto p{
 
+font-size:18px;
 
+line-height:2;
 
+}
 
+/*======================================================
+                    AUDIO
+======================================================*/
 
+audio{
 
-/* CURSOR */
+display:none;
 
+}
+
+/*======================================================
+                CURSOR PERSONALIZADO
+======================================================*/
 
 .custom-cursor{
 
-
 position:fixed;
 
+width:16px;
 
-width:14px;
-
-
-height:14px;
-
-
-background:white;
-
+height:16px;
 
 border-radius:50%;
 
+background:white;
 
 pointer-events:none;
 
+z-index:999999;
 
-z-index:9999;
+transform:
 
+translate(-50%,-50%);
 
 box-shadow:
 
-0 0 25px white;
+0 0 12px white,
+0 0 25px rgba(0,212,255,.6);
+
+transition:
+
+width .2s,
+height .2s,
+background .2s;
 
 }
 
+a:hover ~ .custom-cursor{
 
+width:24px;
 
+height:24px;
 
+}
 
-
-
-/* PARTICULAS */
-
+/*======================================================
+                PARTICULAS
+======================================================*/
 
 .particle{
 
@@ -673,12 +997,13 @@ position:fixed;
 
 bottom:-20px;
 
-
 border-radius:50%;
 
+opacity:.8;
+
+pointer-events:none;
 
 z-index:-1;
-
 
 animation:
 
@@ -686,24 +1011,22 @@ floatUp linear forwards;
 
 }
 
-
-
 @keyframes floatUp{
 
-
-from{
+0%{
 
 transform:
+
 translateY(0);
 
 opacity:1;
 
 }
 
-
-to{
+100%{
 
 transform:
+
 translateY(-120vh);
 
 opacity:0;
@@ -712,17 +1035,172 @@ opacity:0;
 
 }
 
+/*======================================================
+                SCROLLBAR
+======================================================*/
 
+::-webkit-scrollbar{
 
+width:10px;
 
+}
 
+::-webkit-scrollbar-track{
 
+background:#07000f;
 
-/* MOVIL */
+}
 
+::-webkit-scrollbar-thumb{
 
-@media(max-width:850px){
+background:
 
+linear-gradient(
+
+180deg,
+
+var(--primary),
+
+var(--secondary)
+
+);
+
+border-radius:30px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:white;
+
+}
+
+/*======================================================
+                ANIMACIONES
+======================================================*/
+
+.show{
+
+opacity:1 !important;
+
+transform:
+
+translateY(0) !important;
+
+}
+
+.fade-up{
+
+animation:
+
+fadeUp .8s ease forwards;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:
+
+translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+
+translateY(0);
+
+}
+
+}
+
+/*======================================================
+            EFECTO GLOW TARJETAS
+======================================================*/
+
+.card::after{
+
+content:"";
+
+position:absolute;
+
+left:-40%;
+
+top:-40%;
+
+width:200px;
+
+height:200px;
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(155,61,255,.15),
+
+transparent
+
+);
+
+transition:.5s;
+
+}
+
+.card:hover::after{
+
+left:70%;
+
+top:60%;
+
+}
+
+/*======================================================
+            EFECTO TITULOS
+======================================================*/
+
+.profile-info h1,
+section h2{
+
+transition:.35s;
+
+}
+
+.profile-info h1:hover,
+section h2:hover{
+
+text-shadow:
+
+0 0 35px rgba(0,212,255,.8);
+
+}
+
+/*======================================================
+            TRANSICIONES
+======================================================*/
+
+img,
+button,
+a,
+.card,
+.stat-card,
+.mission-box{
+
+transition:.35s ease;
+
+}/*======================================================
+                    RESPONSIVE
+======================================================*/
+
+@media (max-width:1200px){
 
 .profile-card{
 
@@ -730,17 +1208,33 @@ flex-direction:column;
 
 text-align:center;
 
-}
-
-
-.profile-info h1{
-
-font-size:40px;
+padding:45px;
 
 }
 
+.profile-info{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.profile-info p{
+
+max-width:700px;
+
+}
+
+}
+
+@media (max-width:992px){
 
 nav{
+
+padding:18px 5%;
 
 flex-direction:column;
 
@@ -748,23 +1242,321 @@ gap:20px;
 
 }
 
-
-.links a{
-
-display:inline-block;
-
-margin:8px;
-
-}
-
-
-.buttons{
+.links{
 
 justify-content:center;
 
 flex-wrap:wrap;
 
+gap:15px;
+
 }
 
+.links a{
+
+margin:0;
+
+}
+
+section{
+
+padding:90px 7%;
+
+}
+
+.cards{
+
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
+}
+
+.stats{
+
+grid-template-columns:
+repeat(auto-fit,minmax(180px,1fr));
+
+}
+
+.profile-info h1{
+
+font-size:52px;
+
+}
+
+.profile-info h2{
+
+font-size:24px;
+
+}
+
+.avatar{
+
+width:220px;
+height:220px;
+
+}
+
+}
+
+@media (max-width:768px){
+
+.hero{
+
+padding-top:150px;
+
+}
+
+.profile-card{
+
+padding:35px;
+
+gap:35px;
+
+}
+
+.profile-info h1{
+
+font-size:42px;
+
+}
+
+.profile-info h2{
+
+font-size:21px;
+
+}
+
+.profile-info p{
+
+font-size:16px;
+
+}
+
+.buttons{
+
+justify-content:center;
+
+}
+
+.buttons a{
+
+width:100%;
+
+text-align:center;
+
+}
+
+section h2{
+
+font-size:34px;
+
+}
+
+.card{
+
+padding:28px;
+
+}
+
+.stat-card h2{
+
+font-size:42px;
+
+}
+
+.mission-box{
+
+padding:30px;
+
+}
+
+}
+
+@media (max-width:480px){
+
+.logo{
+
+font-size:24px;
+
+}
+
+.links{
+
+gap:10px;
+
+}
+
+.links a{
+
+font-size:14px;
+
+}
+
+.profile-info h1{
+
+font-size:34px;
+
+}
+
+.profile-info h2{
+
+font-size:18px;
+
+}
+
+.avatar{
+
+width:180px;
+height:180px;
+
+}
+
+section{
+
+padding:80px 6%;
+
+}
+
+.card{
+
+padding:24px;
+
+}
+
+.card h3{
+
+font-size:21px;
+
+}
+
+.card p{
+
+font-size:15px;
+
+}
+
+}
+
+/*======================================================
+                ANIMACIONES EXTRA
+======================================================*/
+
+@keyframes floatCard{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-6px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+.profile-card{
+
+animation:
+floatCard 5s ease-in-out infinite;
+
+}
+
+.stat-card:nth-child(1){
+
+animation-delay:.1s;
+
+}
+
+.stat-card:nth-child(2){
+
+animation-delay:.2s;
+
+}
+
+.stat-card:nth-child(3){
+
+animation-delay:.3s;
+
+}
+
+.stat-card:nth-child(4){
+
+animation-delay:.4s;
+
+}
+
+/*======================================================
+                EFECTO HERO
+======================================================*/
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+width:450px;
+
+height:450px;
+
+background:
+
+radial-gradient(circle,
+rgba(155,61,255,.18),
+transparent);
+
+filter:blur(40px);
+
+left:-150px;
+
+top:100px;
+
+z-index:-1;
+
+}
+
+.hero::after{
+
+content:"";
+
+position:absolute;
+
+width:500px;
+
+height:500px;
+
+background:
+
+radial-gradient(circle,
+rgba(0,212,255,.14),
+transparent);
+
+right:-150px;
+
+bottom:50px;
+
+filter:blur(50px);
+
+z-index:-1;
+
+}
+
+/*======================================================
+                FOOTER SPACE
+======================================================*/
+
+body{
+
+padding-bottom:50px;
 
 }
