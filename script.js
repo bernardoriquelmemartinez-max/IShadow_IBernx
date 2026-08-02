@@ -31,20 +31,20 @@ document.addEventListener("mousemove",(e)=>{
 function animateCursor(){
 
 
-    cursorX += (mouseX - cursorX) * 0.15;
+    cursorX += (mouseX - cursorX) * 0.18;
 
-    cursorY += (mouseY - cursorY) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.18;
 
 
+    cursor.style.left =
+    cursorX + "px";
 
-    cursor.style.left = cursorX + "px";
 
-    cursor.style.top = cursorY + "px";
-
+    cursor.style.top =
+    cursorY + "px";
 
 
     requestAnimationFrame(animateCursor);
-
 
 }
 
@@ -63,7 +63,9 @@ animateCursor();
 // ===============================
 
 
-const music = document.getElementById("music");
+const music =
+document.getElementById("music");
+
 
 
 document.addEventListener("click",()=>{
@@ -90,8 +92,9 @@ document.addEventListener("click",()=>{
 
 
 
+
 // ===============================
-// PARTICULAS MEJORADAS
+// PARTICULAS MORADAS/AZULES
 // ===============================
 
 
@@ -100,6 +103,7 @@ function createParticle(){
 
     const particle =
     document.createElement("span");
+
 
 
     particle.className="particle";
@@ -126,16 +130,21 @@ function createParticle(){
 
 
     particle.style.animationDuration =
-    Math.random()*6+4+"s";
+    Math.random()*6+5+"s";
 
 
 
-    particle.style.opacity =
-    Math.random();
+    particle.style.background =
+    Math.random()>0.5
+    ?
+    "#b100ff"
+    :
+    "#00c8ff";
 
 
 
     document.body.appendChild(particle);
+
 
 
 
@@ -145,8 +154,7 @@ function createParticle(){
         particle.remove();
 
 
-    },10000);
-
+    },11000);
 
 
 }
@@ -164,14 +172,15 @@ setInterval(createParticle,250);
 
 
 // ===============================
-// ANIMACIONES AL HACER SCROLL
+// ANIMACIONES SCROLL
 // ===============================
 
 
-
-const animatedElements =
+const elements =
 document.querySelectorAll(
-".card,.stat-card,.profile-card,.mission-box"
+
+".card, .stat-card, .profile-card, .mission-box"
+
 );
 
 
@@ -183,47 +192,49 @@ new IntersectionObserver((entries)=>{
 entries.forEach(entry=>{
 
 
-    if(entry.isIntersecting){
+if(entry.isIntersecting){
 
 
-        entry.target.classList.add("show");
+entry.target.classList.add("show");
 
 
-    }
+}
 
 
 });
 
 
 },{
-    threshold:.15
-});
 
-
-
-
-
-animatedElements.forEach(element=>{
-
-
-    element.style.opacity="0";
-
-
-    element.style.transform=
-    "translateY(50px)";
-
-
-
-    element.style.transition=
-    "all .8s ease";
-
-
-
-    observer.observe(element);
-
-
+threshold:0.15
 
 });
+
+
+
+
+
+elements.forEach(element=>{
+
+
+element.style.opacity="0";
+
+
+element.style.transform=
+"translateY(50px)";
+
+
+
+element.style.transition=
+"all .8s ease";
+
+
+
+observer.observe(element);
+
+
+});
+
 
 
 
@@ -245,26 +256,31 @@ document.querySelectorAll("a[href^='#']")
 link.addEventListener("click",(e)=>{
 
 
-    e.preventDefault();
+e.preventDefault();
 
 
-    const target =
-    document.querySelector(
-    link.getAttribute("href")
-    );
+
+const target =
+
+document.querySelector(
+
+link.getAttribute("href")
+
+);
 
 
-    if(target){
+
+if(target){
 
 
-        target.scrollIntoView({
+target.scrollIntoView({
 
-            behavior:"smooth"
+behavior:"smooth"
 
-        });
+});
 
 
-    }
+}
 
 
 });
@@ -279,25 +295,78 @@ link.addEventListener("click",(e)=>{
 
 
 
+
 // ===============================
-// EFECTO PARALLAX SUAVE
+// EFECTO PARALLAX
 // ===============================
 
 
-window.addEventListener("mousemove",(e)=>{
+document.addEventListener("mousemove",(e)=>{
 
 
 const x =
-(e.clientX / window.innerWidth - .5) * 10;
+
+(e.clientX /
+window.innerWidth - .5)
+* 20;
+
 
 
 const y =
-(e.clientY / window.innerHeight - .5) * 10;
+
+(e.clientY /
+window.innerHeight - .5)
+* 20;
 
 
 
 document.body.style.backgroundPosition =
-`${50 + x}% ${50 + y}%`;
+
+`${50+x}% ${50+y}%`;
 
 
 });
+
+
+
+
+
+
+
+
+
+// ===============================
+// EFECTO DE TITULO
+// ===============================
+
+
+const title =
+document.querySelector(".profile-info h1");
+
+
+
+if(title){
+
+
+title.addEventListener("mouseenter",()=>{
+
+
+title.style.textShadow =
+"0 0 40px #00c8ff";
+
+
+});
+
+
+
+title.addEventListener("mouseleave",()=>{
+
+
+title.style.textShadow =
+"0 0 30px #b100ff";
+
+
+});
+
+
+}
