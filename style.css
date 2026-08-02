@@ -1,8 +1,8 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Arial', sans-serif;
 }
 
 
@@ -15,31 +15,47 @@ body {
     ),
     url("assets/background.png");
 
-    background-size: cover;
-    background-position: center;
-    color: white;
+    background-size:cover;
+    background-position:center;
 
-    cursor: default;
+    color:white;
+
+    cursor:none;
+
 }
 
 
 
+/* HEADER */
+
 header {
 
-    text-align: center;
-    padding: 60px 20px;
+    text-align:center;
+    padding:70px 20px;
 
 }
 
 
 header h1 {
 
-    font-size: 45px;
-    color: #00ffff;
+    font-size:50px;
+    color:#00ffff;
 
     text-shadow:
     0 0 10px #00ffff,
-    0 0 20px #00ffff;
+    0 0 30px #00ffff;
+
+    animation:pulse 2s infinite;
+
+}
+
+
+@keyframes pulse {
+
+    50%{
+        text-shadow:
+        0 0 25px #00ffff;
+    }
 
 }
 
@@ -47,26 +63,39 @@ header h1 {
 
 header p {
 
-    font-size: 20px;
-    color: #aaa;
+    margin-top:15px;
+
+    font-size:22px;
+
+    color:#aaa;
 
 }
 
 
 
+/* MENU */
+
+
 nav {
 
     display:flex;
+
     justify-content:center;
-    gap:25px;
+
+    gap:30px;
 
     padding:20px;
 
     background:
-    rgba(0,0,0,0.7);
+    rgba(0,0,0,.75);
 
     position:sticky;
+
     top:0;
+
+    z-index:1000;
+
+    backdrop-filter:blur(10px);
 
 }
 
@@ -75,7 +104,10 @@ nav {
 nav a {
 
     color:white;
+
     text-decoration:none;
+
+    font-size:18px;
 
     transition:.3s;
 
@@ -87,14 +119,20 @@ nav a:hover {
 
     color:#00ffff;
 
+    text-shadow:
+    0 0 10px #00ffff;
+
 }
 
 
 
 
+/* SECCIONES */
+
+
 section {
 
-    padding:60px 10%;
+    padding:70px 10%;
 
     text-align:center;
 
@@ -102,37 +140,40 @@ section {
 
 
 
+/* AVATAR */
+
+
 .avatar {
 
-    width:180px;
-    height:180px;
+    width:190px;
+
+    height:190px;
 
     border-radius:50%;
 
     border:4px solid #00ffff;
 
     box-shadow:
-    0 0 20px #00ffff;
-
-    margin-bottom:20px;
+    0 0 30px #00ffff;
 
 }
 
 
 
 
-.cards {
+/* TARJETAS */
 
+
+.cards {
 
     display:grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
+    repeat(auto-fit,minmax(230px,1fr));
 
     gap:25px;
 
     margin-top:40px;
-
 
 }
 
@@ -140,23 +181,16 @@ section {
 
 .card {
 
-
     background:
-    rgba(20,20,20,0.85);
-
+    rgba(15,15,15,.9);
 
     padding:30px;
 
+    border-radius:18px;
 
-    border-radius:15px;
-
-
-    border:
-    1px solid #333;
-
+    border:1px solid #333;
 
     transition:.4s;
-
 
 }
 
@@ -164,17 +198,15 @@ section {
 
 .card:hover {
 
-
     transform:
-    translateY(-10px);
+    translateY(-12px)
+    scale(1.03);
 
 
     border-color:#00ffff;
 
-
     box-shadow:
-    0 0 25px #00ffff;
-
+    0 0 30px #00ffff;
 
 }
 
@@ -194,24 +226,24 @@ section {
 
     color:#ccc;
 
-    font-size:18px;
+    font-size:17px;
 
 }
 
 
 
+/* HABILIDADES */
+
 
 .skills {
 
-
     display:flex;
-
-    flex-wrap:wrap;
 
     justify-content:center;
 
-    gap:20px;
+    flex-wrap:wrap;
 
+    gap:20px;
 
 }
 
@@ -219,20 +251,15 @@ section {
 
 .skills p {
 
-
     background:#111;
 
     padding:15px 25px;
 
-
-    border-radius:10px;
-
+    border-radius:12px;
 
     border:1px solid #333;
 
-
     transition:.3s;
-
 
 }
 
@@ -240,10 +267,85 @@ section {
 
 .skills p:hover {
 
+    transform:scale(1.08);
 
     border-color:#00ffff;
 
-    transform:scale(1.05);
+}
+
+
+
+/* CURSOR */
+
+
+.custom-cursor {
+
+    position:fixed;
+
+    width:12px;
+
+    height:12px;
+
+    background:white;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    box-shadow:
+    0 0 20px white;
+
+    transform:
+    translate(-50%,-50%);
+
+}
+
+
+
+/* PARTICULAS */
+
+
+.particle {
+
+    position:fixed;
+
+    bottom:-20px;
+
+    width:5px;
+
+    height:5px;
+
+    background:#00ffff;
+
+    border-radius:50%;
+
+    animation:rise linear forwards;
+
+}
+
+
+
+@keyframes rise {
+
+
+from {
+
+    transform:translateY(0);
+
+    opacity:1;
+
+}
+
+
+to {
+
+    transform:translateY(-110vh);
+
+    opacity:0;
+
+}
 
 
 }
@@ -253,17 +355,13 @@ section {
 
 #contacto {
 
-
     padding-bottom:100px;
-
 
 }
 
 
 
-
 @media(max-width:700px){
-
 
 header h1{
 
@@ -284,74 +382,5 @@ section{
 padding:40px 5%;
 
 }
-
-
-}
-.custom-cursor {
-
-position:fixed;
-
-width:12px;
-height:12px;
-
-background:white;
-
-border-radius:50%;
-
-pointer-events:none;
-
-z-index:9999;
-
-box-shadow:
-0 0 15px white;
-
-transform:translate(-50%,-50%);
-
-}
-
-
-
-.particle {
-
-position:fixed;
-
-bottom:-20px;
-
-width:5px;
-
-height:5px;
-
-background:#00ffff;
-
-border-radius:50%;
-
-opacity:.7;
-
-animation: rise linear forwards;
-
-}
-
-
-
-@keyframes rise {
-
-
-from{
-
-transform:translateY(0);
-
-opacity:1;
-
-}
-
-
-to{
-
-transform:translateY(-110vh);
-
-opacity:0;
-
-}
-
 
 }
