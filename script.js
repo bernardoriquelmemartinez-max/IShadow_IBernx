@@ -1,389 +1,128 @@
-/*======================================================
-                    CURSOR
-======================================================*/
-
-.custom-cursor{
-
-    position:fixed;
-
-    width:16px;
-
-    height:16px;
-
-    border-radius:50%;
-
-    background:white;
-
-    pointer-events:none;
-
-    z-index:999999;
-
-    transform:
-
-    translate(-50%,-50%);
-
-    box-shadow:
-
-    0 0 15px white,
-    0 0 25px rgba(0,212,255,.7);
-
-    transition:
-
-    width .2s,
-    height .2s,
-    background .2s;
-
-}
+// ===============================
+// CURSOR PERSONALIZADO
+// ===============================
 
 
-.cursor-hover{
+const cursor = document.createElement("div");
 
-    width:28px;
+cursor.className = "custom-cursor";
 
-    height:28px;
-
-    background:var(--secondary);
-
-}
+document.body.appendChild(cursor);
 
 
-/*======================================================
-                    PARTICULAS
-======================================================*/
 
-.particle{
+let mouseX = 0;
+let mouseY = 0;
 
-    position:fixed;
+let cursorX = 0;
+let cursorY = 0;
 
-    bottom:-20px;
 
-    border-radius:50%;
 
-    pointer-events:none;
+document.addEventListener("mousemove",(e)=>{
 
-    z-index:-1;
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 
-    animation:
+});
 
-    floatUp linear forwards;
+
+
+function animateCursor(){
+
+
+    cursorX += (mouseX - cursorX) * 0.15;
+
+    cursorY += (mouseY - cursorY) * 0.15;
+
+
+
+    cursor.style.left =
+    cursorX + "px";
+
+
+    cursor.style.top =
+    cursorY + "px";
+
+
+
+    requestAnimationFrame(animateCursor);
 
 }
 
 
-@keyframes floatUp{
+animateCursor();
 
-    from{
 
-        transform:translateY(0);
 
-        opacity:.8;
+
+
+
+
+
+
+// ===============================
+// MÚSICA DE FONDO
+// ===============================
+
+
+const music =
+document.getElementById("music");
+
+
+
+document.addEventListener("click",()=>{
+
+
+    if(music){
+
+
+        music.volume = 0.35;
+
+
+        music.play()
+        .catch(()=>{});
+
 
     }
 
 
-    to{
+},{once:true});
 
-        transform:translateY(-120vh);
 
-        opacity:0;
 
-    }
 
-}
 
 
-/*======================================================
-                    BOTON ARRIBA
-======================================================*/
 
-.top-button{
 
-    position:fixed;
 
-    right:30px;
+// ===============================
+// PARTICULAS
+// ===============================
 
-    bottom:30px;
-
-    width:55px;
-
-    height:55px;
-
-    border:none;
-
-    border-radius:50%;
-
-    cursor:pointer;
-
-    font-size:20px;
-
-    color:white;
-
-    background:
-
-    linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-    );
-
-    box-shadow:
-
-    0 0 25px rgba(155,61,255,.5);
-
-    z-index:999;
-
-    display:none;
-
-}
-
-
-.top-button:hover{
-
-    transform:translateY(-5px);
-
-}
-
-
-/*======================================================
-                    AUDIO
-======================================================*/
-
-audio{
-
-    display:none;
-
-}
-
-
-/*======================================================
-                    SCROLLBAR
-======================================================*/
-
-::-webkit-scrollbar{
-
-    width:10px;
-
-}
-
-
-::-webkit-scrollbar-track{
-
-    background:#07000f;
-
-}
-
-
-::-webkit-scrollbar-thumb{
-
-    background:
-
-    linear-gradient(
-        var(--primary),
-        var(--secondary)
-    );
-
-    border-radius:30px;
-
-}
-
-
-/*======================================================
-                    RESPONSIVE
-======================================================*/
-
-
-@media(max-width:1200px){
-
-
-    .profile-card{
-
-        flex-direction:column;
-
-        text-align:center;
-
-    }
-
-
-    .profile-info{
-
-        display:flex;
-
-        flex-direction:column;
-
-        align-items:center;
-
-    }
-
-
-}
-
-
-
-@media(max-width:992px){
-
-
-    nav{
-
-        flex-direction:column;
-
-        gap:20px;
-
-        padding:18px 5%;
-
-    }
-
-
-    .links{
-
-        gap:14px;
-
-    }
-
-
-    .profile-info h1{
-
-        font-size:52px;
-
-    }
-
-
-}
-
-
-
-@media(max-width:768px){
-
-
-    section{
-
-        padding:80px 6%;
-
-    }
-
-
-    .profile-card{
-
-        padding:35px;
-
-    }
-
-
-    .profile-info h1{
-
-        font-size:40px;
-
-    }
-
-
-    .profile-info h2{
-
-        font-size:22px;
-
-    }
-
-
-    .profile-info p{
-
-        font-size:16px;
-
-    }
-
-
-    .avatar{
-
-        width:210px;
-
-        height:210px;
-
-    }
-
-
-    .buttons a{
-
-        width:100%;
-
-        text-align:center;
-
-    }
-
-
-    section h2{
-
-        font-size:34px;
-
-    }
-
-
-}
-
-
-
-@media(max-width:480px){
-
-
-    .logo{
-
-        font-size:24px;
-
-    }
-
-
-    .links a{
-
-        font-size:13px;
-
-    }
-
-
-    .avatar{
-
-        width:170px;
-
-        height:170px;
-
-    }
-
-
-    .profile-info h1{
-
-        font-size:32px;
-
-    }
-
-
-    .card{
-
-        padding:25px;
-
-    }
-
-
-}// ======================================================
-// PARTICULAS OPTIMIZADAS
-// ======================================================
-
-const particleLimit = 35;
 
 function createParticle(){
-
-    const particles =
-    document.querySelectorAll(".particle");
-
-
-    if(particles.length >= particleLimit)
-    return;
-
 
 
     const particle =
     document.createElement("span");
 
 
-    particle.className="particle";
+    particle.className =
+    "particle";
 
 
-    const size =
+
+    particle.style.left =
+    Math.random() *
+    window.innerWidth + "px";
+
+
+
+    let size =
     Math.random()*8+3;
+
 
 
     particle.style.width =
@@ -394,21 +133,24 @@ function createParticle(){
     size+"px";
 
 
-    particle.style.left =
-    Math.random()*window.innerWidth+"px";
-
 
     particle.style.background =
     Math.random() > .5
-    ? "#9b3dff"
-    : "#00d4ff";
+    ?
+    "#b100ff"
+    :
+    "#00c8ff";
+
 
 
     particle.style.animationDuration =
-    Math.random()*5+6+"s";
+    Math.random()*5+5+"s";
 
 
-    document.body.appendChild(particle);
+
+    document.body.appendChild(
+        particle
+    );
 
 
 
@@ -416,108 +158,53 @@ function createParticle(){
 
         particle.remove();
 
-    },12000);
+    },10000);
 
 
 }
 
 
 
-setInterval(createParticle,700);
+setInterval(
+    createParticle,
+    300
+);
 
 
 
 
-// ======================================================
-// EFECTO ESCRITURA
-// ======================================================
-
-
-const typingTitle =
-document.querySelector(".profile-info h2");
-
-
-if(typingTitle){
-
-
-    const text =
-    typingTitle.textContent;
-
-
-    typingTitle.textContent="";
-
-
-    let index=0;
-
-
-
-    function typing(){
-
-
-        if(index < text.length){
-
-
-            typingTitle.textContent +=
-            text.charAt(index);
-
-
-            index++;
-
-
-            setTimeout(typing,70);
-
-
-        }
-
-
-    }
-
-
-    typing();
-
-
-}
 
 
 
 
-// ======================================================
-// BOTON VOLVER ARRIBA
-// ======================================================
+
+// ===============================
+// ANIMACIONES SCROLL
+// ===============================
 
 
-const topButton =
-document.createElement("button");
+const animatedElements =
+document.querySelectorAll(
 
+".card, .stat-card, .mission-box"
 
-topButton.className =
-"top-button";
-
-
-topButton.innerHTML =
-"▲";
-
-
-document.body.appendChild(topButton);
+);
 
 
 
-
-window.addEventListener("scroll",()=>{
-
-
-    if(window.scrollY > 500){
+const observer =
+new IntersectionObserver((entries)=>{
 
 
-        topButton.style.display =
-        "block";
+entries.forEach(entry=>{
 
 
-    }else{
+    if(entry.isIntersecting){
 
 
-        topButton.style.display =
-        "none";
+        entry.target.classList.add(
+            "show"
+        );
 
 
     }
@@ -526,15 +213,70 @@ window.addEventListener("scroll",()=>{
 });
 
 
+},{
 
-topButton.addEventListener("click",()=>{
+threshold:0.15
+
+});
 
 
-    window.scrollTo({
 
-        top:0,
 
-        behavior:"smooth"
+
+animatedElements.forEach(element=>{
+
+
+    observer.observe(element);
+
+
+});
+
+
+
+
+
+
+
+
+
+// ===============================
+// SCROLL SUAVE
+// ===============================
+
+
+document
+.querySelectorAll("a[href^='#']")
+.forEach(link=>{
+
+
+    link.addEventListener(
+    "click",
+    (e)=>{
+
+
+        e.preventDefault();
+
+
+
+        const section =
+        document.querySelector(
+        link.getAttribute("href")
+        );
+
+
+
+        if(section){
+
+
+            section.scrollIntoView({
+
+                behavior:"smooth"
+
+            });
+
+
+        }
+
 
     });
 
@@ -544,18 +286,87 @@ topButton.addEventListener("click",()=>{
 
 
 
-// ======================================================
-// CONSOLA
-// ======================================================
 
 
-console.log(
-"%cIShadow_IBernx Portfolio",
-"color:#9b3dff;font-size:22px;font-weight:bold;"
+
+
+
+// ===============================
+// PARALLAX DEL FONDO
+// ===============================
+
+
+document.addEventListener(
+"mousemove",
+(e)=>{
+
+
+const x =
+(e.clientX /
+window.innerWidth - .5)
+* 15;
+
+
+
+const y =
+(e.clientY /
+window.innerHeight - .5)
+* 15;
+
+
+
+document.body.style.backgroundPosition =
+`${50+x}% ${50+y}%`;
+
+
+});
+
+
+
+
+
+
+
+
+
+// ===============================
+// EFECTO TITULO
+// ===============================
+
+
+const title =
+document.querySelector(
+".profile-info h1"
 );
 
 
-console.log(
-"%cOptimized Performance Edition",
-"color:#00d4ff;font-size:14px;"
-);
+
+if(title){
+
+
+title.addEventListener(
+"mouseenter",
+()=>{
+
+
+title.style.textShadow =
+"0 0 45px #00c8ff";
+
+
+});
+
+
+
+title.addEventListener(
+"mouseleave",
+()=>{
+
+
+title.style.textShadow =
+"0 0 30px #b100ff";
+
+
+});
+
+
+}
