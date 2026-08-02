@@ -10,43 +10,41 @@ body{
 
     background:
     linear-gradient(
-        rgba(5,0,15,.90),
-        rgba(0,0,0,.95)
+        rgba(5,0,15,.92),
+        rgba(0,0,0,.96)
     ),
     url("assets/background.png");
 
     background-size:cover;
     background-position:center;
+    background-attachment:fixed;
 
     color:white;
 
 }
 
 
-
-/* NAV */
+/* NAVEGACIÓN */
 
 nav{
 
     position:sticky;
-
     top:0;
-
     z-index:1000;
 
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
-    padding:20px 10%;
+    padding:20px 8%;
 
-    background:rgba(0,0,0,.65);
+    background:
+    rgba(0,0,0,.65);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(15px);
 
-    border-bottom:1px solid #8b00ff;
+    border-bottom:
+    1px solid #a100ff;
 
 }
 
@@ -69,7 +67,7 @@ nav a{
 
     text-decoration:none;
 
-    margin-left:25px;
+    margin-left:20px;
 
     transition:.3s;
 
@@ -81,11 +79,17 @@ nav a:hover{
 
     color:#b100ff;
 
+    text-shadow:
+    0 0 10px #b100ff;
+
 }
 
 
 
-/* HERO */
+
+
+
+/* PRESENTACIÓN */
 
 
 .hero{
@@ -98,7 +102,7 @@ nav a:hover{
 
     align-items:center;
 
-    padding:50px 10%;
+    padding:60px 10%;
 
 }
 
@@ -106,7 +110,7 @@ nav a:hover{
 
 .perfil{
 
-    max-width:850px;
+    max-width:900px;
 
     text-align:center;
 
@@ -116,18 +120,21 @@ nav a:hover{
 
 .avatar{
 
-    width:200px;
+    width:210px;
 
-    height:200px;
+    height:210px;
 
     border-radius:50%;
 
-    border:4px solid #b100ff;
+    object-fit:cover;
+
+    border:
+
+    4px solid #b100ff;
 
     box-shadow:
-    0 0 30px #b100ff;
 
-    margin-bottom:25px;
+    0 0 35px #b100ff;
 
 }
 
@@ -135,12 +142,13 @@ nav a:hover{
 
 .perfil h1{
 
-    font-size:55px;
+    margin-top:25px;
 
-    color:white;
+    font-size:60px;
 
     text-shadow:
-    0 0 20px #b100ff;
+
+    0 0 25px #b100ff;
 
 }
 
@@ -150,7 +158,7 @@ nav a:hover{
 
     color:#b100ff;
 
-    font-size:25px;
+    font-size:28px;
 
     margin:15px;
 
@@ -160,19 +168,21 @@ nav a:hover{
 
 .perfil p{
 
-    margin-top:30px;
-
-    color:#ccc;
+    color:#d0d0d0;
 
     font-size:18px;
 
-    line-height:1.7;
+    line-height:1.8;
+
+    margin-top:35px;
 
 }
 
 
 
-/* STATS */
+
+
+/* ESTADÍSTICAS */
 
 
 .stats{
@@ -184,7 +194,7 @@ nav a:hover{
 
     gap:25px;
 
-    padding:50px 10%;
+    padding:60px 10%;
 
 }
 
@@ -193,17 +203,18 @@ nav a:hover{
 .box{
 
     background:
-    rgba(255,255,255,.05);
 
-    border:1px solid #8b00ff;
+    rgba(255,255,255,.06);
 
-    border-radius:20px;
+    border:
 
-    padding:30px;
+    1px solid #8b00ff;
 
-    text-align:center;
+    padding:35px;
 
-    backdrop-filter:blur(10px);
+    border-radius:25px;
+
+    backdrop-filter:blur(15px);
 
     transition:.4s;
 
@@ -216,6 +227,7 @@ nav a:hover{
     transform:translateY(-10px);
 
     box-shadow:
+
     0 0 30px #b100ff;
 
 }
@@ -226,9 +238,21 @@ nav a:hover{
 
     color:#b100ff;
 
-    font-size:40px;
+    font-size:45px;
 
 }
+
+
+
+.box p{
+
+    color:#ccc;
+
+    margin-top:10px;
+
+}
+
+
 
 
 
@@ -237,7 +261,7 @@ nav a:hover{
 
 section{
 
-    padding:70px 10%;
+    padding:80px 10%;
 
     text-align:center;
 
@@ -247,13 +271,14 @@ section{
 
 section h2{
 
-    font-size:35px;
-
-    margin-bottom:40px;
-
     color:#b100ff;
 
+    font-size:38px;
+
+    margin-bottom:45px;
+
     text-shadow:
+
     0 0 15px #b100ff;
 
 }
@@ -261,7 +286,8 @@ section h2{
 
 
 
-/* CARDS */
+
+/* TARJETAS */
 
 
 .cards{
@@ -269,9 +295,9 @@ section h2{
     display:grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(230px,1fr));
+    repeat(auto-fit,minmax(240px,1fr));
 
-    gap:25px;
+    gap:30px;
 
 }
 
@@ -281,17 +307,17 @@ section h2{
 
     background:
 
-    rgba(255,255,255,.06);
+    rgba(255,255,255,.07);
 
     border:
 
     1px solid rgba(177,0,255,.5);
 
-    border-radius:20px;
+    border-radius:25px;
 
-    padding:30px;
+    padding:35px;
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(15px);
 
     transition:.4s;
 
@@ -305,11 +331,11 @@ section h2{
 
     translateY(-12px);
 
+    border-color:#b100ff;
+
     box-shadow:
 
-    0 0 30px #b100ff;
-
-    border-color:#b100ff;
+    0 0 35px #b100ff;
 
 }
 
@@ -317,9 +343,9 @@ section h2{
 
 .card h3{
 
-    font-size:23px;
+    font-size:24px;
 
-    margin-bottom:15px;
+    margin-bottom:20px;
 
 }
 
@@ -329,33 +355,152 @@ section h2{
 
     color:#ccc;
 
-    font-size:18px;
+    font-size:17px;
+
+    line-height:1.6;
 
 }
 
 
 
+
+
+/* MISIÓN */
+
+
+#mision .card{
+
+    max-width:850px;
+
+    margin:auto;
+
+}
+
+
+
+
+
+
+/* CONTACTO */
 
 
 #contacto{
 
-    padding-bottom:100px;
+    padding-bottom:120px;
+
+}
+
+
+
+#contacto b{
+
+    color:#b100ff;
+
+    font-size:22px;
 
 }
 
 
 
 
-@media(max-width:700px){
+
+
+
+/* CURSOR */
+
+
+.custom-cursor{
+
+    position:fixed;
+
+    width:12px;
+
+    height:12px;
+
+    background:#b100ff;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    box-shadow:
+
+    0 0 20px #b100ff;
+
+}
+
+
+
+
+
+
+/* PARTICULAS */
+
+
+.particle{
+
+    position:fixed;
+
+    bottom:-20px;
+
+    background:#b100ff;
+
+    border-radius:50%;
+
+    opacity:.8;
+
+    animation:
+
+    subir linear forwards;
+
+}
+
+
+
+@keyframes subir{
+
+
+from{
+
+transform:translateY(0);
+
+opacity:1;
+
+}
+
+
+to{
+
+transform:translateY(-110vh);
+
+opacity:0;
+
+}
+
+
+}
+
+
+
+
+
+
+/* CELULAR */
+
+
+@media(max-width:800px){
 
 
 nav{
 
     flex-direction:column;
 
-    gap:15px;
+    gap:20px;
 
 }
+
 
 
 nav a{
@@ -365,9 +510,18 @@ nav a{
 }
 
 
+
 .perfil h1{
 
-    font-size:35px;
+    font-size:38px;
+
+}
+
+
+
+section{
+
+    padding:50px 5%;
 
 }
 
