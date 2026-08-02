@@ -1,4 +1,3 @@
-
 // ===============================
 // CURSOR PERSONALIZADO
 // ===============================
@@ -10,12 +9,40 @@ cursor.className = "custom-cursor";
 document.body.appendChild(cursor);
 
 
+let mouseX = 0;
+let mouseY = 0;
+
+let cursorX = 0;
+let cursorY = 0;
+
+
 document.addEventListener("mousemove", (e)=>{
 
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 
 });
+
+
+
+function moveCursor(){
+
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+
+
+    cursor.style.left = cursorX + "px";
+    cursor.style.top = cursorY + "px";
+
+
+    requestAnimationFrame(moveCursor);
+
+}
+
+
+moveCursor();
+
+
 
 
 
@@ -23,18 +50,26 @@ document.addEventListener("mousemove", (e)=>{
 // MÚSICA DE FONDO
 // ===============================
 
+
 const music = document.getElementById("music");
 
 
-document.addEventListener("click",()=>{
+document.addEventListener("click", ()=>{
+
 
     if(music){
 
-        music.play();
+        music.volume = 0.35;
+
+        music.play().catch(()=>{});
 
     }
 
+
 },{once:true});
+
+
+
 
 
 
@@ -54,11 +89,21 @@ function createParticle(){
 
 
     particle.style.left =
-    Math.random()*window.innerWidth+"px";
+    Math.random() * window.innerWidth + "px";
+
+
+    particle.style.width =
+    Math.random()*6+3+"px";
+
+
+    particle.style.height =
+    particle.style.width;
+
 
 
     particle.style.animationDuration =
-    (Math.random()*5+3)+"s";
+    Math.random()*5+4+"s";
+
 
 
     document.body.appendChild(particle);
@@ -69,25 +114,31 @@ function createParticle(){
 
         particle.remove();
 
-    },8000);
+    },9000);
 
 
 }
 
 
 
-setInterval(createParticle,300);
+setInterval(createParticle,250);
+
+
+
 
 
 
 
 // ===============================
-// ANIMACIÓN DE TARJETAS
+// ANIMACIONES AL APARECER
 // ===============================
 
 
-const cards =
-document.querySelectorAll(".card");
+const elements =
+document.querySelectorAll(
+".card, section h2, section p, .avatar"
+);
+
 
 
 const observer =
@@ -102,13 +153,13 @@ if(entry.isIntersecting){
 
 entry.target.style.opacity="1";
 
-entry.target.style.transform="translateY(0)";
+entry.target.style.transform=
+"translateY(0)";
 
 
 }
 
 
-
 });
 
 
@@ -116,17 +167,20 @@ entry.target.style.transform="translateY(0)";
 
 
 
-cards.forEach(card=>{
+elements.forEach(element=>{
 
 
-card.style.opacity="0";
+element.style.opacity="0";
 
-card.style.transform="translateY(50px)";
+element.style.transform=
+"translateY(40px)";
 
-card.style.transition="0.7s";
+
+element.style.transition=
+"0.8s ease";
 
 
-observer.observe(card);
+observer.observe(element);
 
 
 });
