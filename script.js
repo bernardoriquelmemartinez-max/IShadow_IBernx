@@ -28,22 +28,28 @@ document.addEventListener("mousemove",(e)=>{
 
 
 
-function animateCursor(){
+function moveCursor(){
+
 
     cursorX += (mouseX - cursorX) * 0.15;
+
     cursorY += (mouseY - cursorY) * 0.15;
 
 
+
     cursor.style.left = cursorX + "px";
+
     cursor.style.top = cursorY + "px";
 
 
-    requestAnimationFrame(animateCursor);
+
+    requestAnimationFrame(moveCursor);
 
 }
 
 
-animateCursor();
+moveCursor();
+
 
 
 
@@ -58,14 +64,18 @@ animateCursor();
 const music = document.getElementById("music");
 
 
+
 document.addEventListener("click",()=>{
 
 
     if(music){
 
+
         music.volume = 0.35;
 
+
         music.play().catch(()=>{});
+
 
     }
 
@@ -78,8 +88,9 @@ document.addEventListener("click",()=>{
 
 
 
+
 // ===============================
-// PARTICULAS
+// PARTICULAS MORADAS
 // ===============================
 
 
@@ -90,23 +101,29 @@ function createParticle(){
     document.createElement("span");
 
 
+
     particle.className="particle";
+
 
 
     particle.style.left =
     Math.random()*window.innerWidth+"px";
 
 
+
     let size =
-    Math.random()*6+3;
+    Math.random()*7+3;
+
 
 
     particle.style.width =
     size+"px";
 
 
+
     particle.style.height =
     size+"px";
+
 
 
     particle.style.animationDuration =
@@ -120,9 +137,12 @@ function createParticle(){
 
     setTimeout(()=>{
 
+
         particle.remove();
 
+
     },9000);
+
 
 
 }
@@ -138,10 +158,10 @@ setInterval(createParticle,300);
 
 
 
-// ===============================
-// ANIMACIONES AL APARECER
-// ===============================
 
+// ===============================
+// ANIMACIONES DE ENTRADA
+// ===============================
 
 
 const elements =
@@ -158,16 +178,17 @@ new IntersectionObserver((entries)=>{
 entries.forEach(entry=>{
 
 
-if(entry.isIntersecting){
+    if(entry.isIntersecting){
 
 
-entry.target.style.opacity="1";
-
-entry.target.style.transform=
-"translateY(0)";
+        entry.target.style.opacity="1";
 
 
-}
+        entry.target.style.transform=
+        "translateY(0)";
+
+
+    }
 
 
 });
@@ -181,19 +202,55 @@ entry.target.style.transform=
 elements.forEach(element=>{
 
 
-element.style.opacity="0";
+    element.style.opacity="0";
 
 
-element.style.transform=
-"translateY(40px)";
+    element.style.transform=
+    "translateY(50px)";
 
 
-element.style.transition=
-"0.8s ease";
+    element.style.transition=
+    "0.8s ease";
 
 
 
-observer.observe(element);
+    observer.observe(element);
+
+
+});
+
+
+
+
+
+
+
+// ===============================
+// SCROLL SUAVE
+// ===============================
+
+
+document.querySelectorAll("a[href^='#']")
+.forEach(link=>{
+
+
+link.addEventListener("click",(e)=>{
+
+
+    e.preventDefault();
+
+
+    document.querySelector(
+    link.getAttribute("href")
+    )
+    .scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+
+
+});
 
 
 });
