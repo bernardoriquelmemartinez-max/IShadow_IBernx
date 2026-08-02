@@ -1,50 +1,198 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>IShadow_IBernx | Portfolio</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Portfolio oficial de IShadow_IBernx - Manager, Operador y Configurador de servidores Minecraft.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
 </head>
 
 <body>
 
-<div class="container">
+    <!-- LOADER -->
 
-    <img src="assets/avatar.png" class="avatar" alt="Avatar">
+    <div id="loader">
 
-    <h1>IShadow_IBernx</h1>
+        <h1>IShadow_IBernx</h1>
 
-    <p class="subtitle">
-        Developer & Configurador de Servidores Minecraft
-    </p>
+        <div class="loader-bar">
 
-    <div class="card">
-        <h2>👋 Sobre mí</h2>
+            <span></span>
 
-        <p>
-            Soy desarrollador y configurador de servidores Minecraft especializado
-            en Paper, BoxPvP, Skript, LuckPerms, DeluxeMenus, Oraxen e ItemsAdder.
-        </p>
-    </div>
-
-    <div class="card">
-
-        <h2>📞 Contacto</h2>
-
-        <p>Discord: <b>shugarcitarika</b></p>
-
-        <p>GitHub: <b>bernadoriquelmemartinez-max</b></p>
-
-        <p>🎵 Música favorita: 7 Trompetas en el Cielo</p>
+        </div>
 
     </div>
 
-</div>
+    <!-- CURSOR -->
 
-<script src="script.js"></script>
+    <div id="cursor"></div>
+
+    <!-- PARTICULAS -->
+
+    <div id="particles-js"></div>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="profile">
+
+            <img src="assets/img/profile.png" alt="Profile">
+
+            <h2>IShadow_IBernx</h2>
+
+            <span>Manager</span>
+
+        </div>
+
+        <nav>
+
+            <a href="#home"><i class="ri-home-5-line"></i> Inicio</a>
+
+            <a href="#about"><i class="ri-user-line"></i> Sobre mí</a>
+
+            <a href="#experience"><i class="ri-briefcase-line"></i> Experiencia</a>
+
+            <a href="#skills"><i class="ri-bar-chart-box-line"></i> Habilidades</a>
+
+            <a href="#github"><i class="ri-github-fill"></i> GitHub</a>
+
+            <a href="#contact"><i class="ri-chat-3-line"></i> Contacto</a>
+
+        </nav>
+
+    </aside>
+
+    <!-- CONTENIDO -->
+
+    <main>
+
+        <!-- HOME -->
+
+        <section id="home" class="hero">
+
+            <div class="hero-text">
+
+                <small>Hola, soy</small>
+
+                <h1>IShadow_IBernx</h1>
+
+                <h3>Manager • Operador • Configurador</h3>
+
+                <p>
+
+                    Apasionado por la administración de comunidades y la gestión
+                    de servidores Minecraft.
+
+                    Más de 3 años formando parte de equipos Staff.
+
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#experience" class="btn">
+
+                        Ver experiencia
+
+                    </a>
+
+                    <a href="#contact" class="btn2">
+
+                        Contactarme
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="hero-image">
+
+                <img src="assets/img/profile.png" alt="Avatar">
+
+            </div>
+
+        </section>
+
+        <!-- SOBRE MI -->
+
+        <section id="about">
+
+        </section>
+
+        <!-- EXPERIENCIA -->
+
+        <section id="experience">
+
+        </section>
+
+        <!-- HABILIDADES -->
+
+        <section id="skills">
+
+        </section>
+
+        <!-- GITHUB -->
+
+        <section id="github">
+
+        </section>
+
+        <!-- CONTACTO -->
+
+        <section id="contact">
+
+        </section>
+
+    </main>
+
+    <!-- MUSICA -->
+
+    <audio id="music">
+
+        <source src="assets/music/7trompetas.mp3" type="audio/mpeg">
+
+    </audio>
+
+    <button id="musicButton">
+
+        <i class="ri-volume-up-fill"></i>
+
+    </button>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="assets/js/app.js"></script>
+
+    <script src="assets/js/cursor.js"></script>
+
+    <script src="assets/js/github.js"></script>
+
+    <script src="assets/js/music.js"></script>
+
+    <script src="assets/js/loader.js"></script>
+
+    <script src="assets/js/particles.js"></script>
 
 </body>
+
 </html>
