@@ -28,7 +28,7 @@ document.addEventListener("mousemove",(e)=>{
 
 
 
-function moveCursor(){
+function animateCursor(){
 
 
     cursorX += (mouseX - cursorX) * 0.15;
@@ -43,12 +43,14 @@ function moveCursor(){
 
 
 
-    requestAnimationFrame(moveCursor);
+    requestAnimationFrame(animateCursor);
+
 
 }
 
 
-moveCursor();
+animateCursor();
+
 
 
 
@@ -57,12 +59,11 @@ moveCursor();
 
 
 // ===============================
-// MÚSICA
+// MÚSICA DE FONDO
 // ===============================
 
 
 const music = document.getElementById("music");
-
 
 
 document.addEventListener("click",()=>{
@@ -90,7 +91,7 @@ document.addEventListener("click",()=>{
 
 
 // ===============================
-// PARTICULAS MORADAS
+// PARTICULAS MEJORADAS
 // ===============================
 
 
@@ -99,7 +100,6 @@ function createParticle(){
 
     const particle =
     document.createElement("span");
-
 
 
     particle.className="particle";
@@ -112,13 +112,12 @@ function createParticle(){
 
 
     let size =
-    Math.random()*7+3;
+    Math.random()*8+3;
 
 
 
     particle.style.width =
     size+"px";
-
 
 
     particle.style.height =
@@ -127,7 +126,12 @@ function createParticle(){
 
 
     particle.style.animationDuration =
-    Math.random()*5+4+"s";
+    Math.random()*6+4+"s";
+
+
+
+    particle.style.opacity =
+    Math.random();
 
 
 
@@ -141,7 +145,7 @@ function createParticle(){
         particle.remove();
 
 
-    },9000);
+    },10000);
 
 
 
@@ -149,7 +153,7 @@ function createParticle(){
 
 
 
-setInterval(createParticle,300);
+setInterval(createParticle,250);
 
 
 
@@ -160,13 +164,14 @@ setInterval(createParticle,300);
 
 
 // ===============================
-// ANIMACIONES DE ENTRADA
+// ANIMACIONES AL HACER SCROLL
 // ===============================
 
 
-const elements =
+
+const animatedElements =
 document.querySelectorAll(
-".card,.box,.perfil,.avatar"
+".card,.stat-card,.profile-card,.mission-box"
 );
 
 
@@ -181,11 +186,82 @@ entries.forEach(entry=>{
     if(entry.isIntersecting){
 
 
-        entry.target.style.opacity="1";
+        entry.target.classList.add("show");
 
 
-        entry.target.style.transform=
-        "translateY(0)";
+    }
+
+
+});
+
+
+},{
+    threshold:.15
+});
+
+
+
+
+
+animatedElements.forEach(element=>{
+
+
+    element.style.opacity="0";
+
+
+    element.style.transform=
+    "translateY(50px)";
+
+
+
+    element.style.transition=
+    "all .8s ease";
+
+
+
+    observer.observe(element);
+
+
+
+});
+
+
+
+
+
+
+
+
+// ===============================
+// SCROLL SUAVE
+// ===============================
+
+
+
+document.querySelectorAll("a[href^='#']")
+.forEach(link=>{
+
+
+link.addEventListener("click",(e)=>{
+
+
+    e.preventDefault();
+
+
+    const target =
+    document.querySelector(
+    link.getAttribute("href")
+    );
+
+
+    if(target){
+
+
+        target.scrollIntoView({
+
+            behavior:"smooth"
+
+        });
 
 
     }
@@ -199,58 +275,29 @@ entries.forEach(entry=>{
 
 
 
-elements.forEach(element=>{
-
-
-    element.style.opacity="0";
-
-
-    element.style.transform=
-    "translateY(50px)";
-
-
-    element.style.transition=
-    "0.8s ease";
-
-
-
-    observer.observe(element);
-
-
-});
-
-
-
 
 
 
 
 // ===============================
-// SCROLL SUAVE
+// EFECTO PARALLAX SUAVE
 // ===============================
 
 
-document.querySelectorAll("a[href^='#']")
-.forEach(link=>{
+window.addEventListener("mousemove",(e)=>{
 
 
-link.addEventListener("click",(e)=>{
+const x =
+(e.clientX / window.innerWidth - .5) * 10;
 
 
-    e.preventDefault();
+const y =
+(e.clientY / window.innerHeight - .5) * 10;
 
 
-    document.querySelector(
-    link.getAttribute("href")
-    )
-    .scrollIntoView({
 
-        behavior:"smooth"
-
-    });
-
-
-});
+document.body.style.backgroundPosition =
+`${50 + x}% ${50 + y}%`;
 
 
 });
