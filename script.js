@@ -31,9 +31,10 @@ document.addEventListener("mousemove",(e)=>{
 function animateCursor(){
 
 
-    cursorX += (mouseX - cursorX) * 0.18;
+    cursorX += (mouseX - cursorX) * 0.15;
 
-    cursorY += (mouseY - cursorY) * 0.18;
+    cursorY += (mouseY - cursorY) * 0.15;
+
 
 
     cursor.style.left =
@@ -44,12 +45,14 @@ function animateCursor(){
     cursorY + "px";
 
 
+
     requestAnimationFrame(animateCursor);
 
 }
 
 
 animateCursor();
+
 
 
 
@@ -77,7 +80,8 @@ document.addEventListener("click",()=>{
         music.volume = 0.35;
 
 
-        music.play().catch(()=>{});
+        music.play()
+        .catch(()=>{});
 
 
     }
@@ -94,7 +98,7 @@ document.addEventListener("click",()=>{
 
 
 // ===============================
-// PARTICULAS MORADAS/AZULES
+// PARTICULAS
 // ===============================
 
 
@@ -105,13 +109,14 @@ function createParticle(){
     document.createElement("span");
 
 
-
-    particle.className="particle";
+    particle.className =
+    "particle";
 
 
 
     particle.style.left =
-    Math.random()*window.innerWidth+"px";
+    Math.random() *
+    window.innerWidth + "px";
 
 
 
@@ -129,13 +134,8 @@ function createParticle(){
 
 
 
-    particle.style.animationDuration =
-    Math.random()*6+5+"s";
-
-
-
     particle.style.background =
-    Math.random()>0.5
+    Math.random() > .5
     ?
     "#b100ff"
     :
@@ -143,25 +143,32 @@ function createParticle(){
 
 
 
-    document.body.appendChild(particle);
+    particle.style.animationDuration =
+    Math.random()*5+5+"s";
 
+
+
+    document.body.appendChild(
+        particle
+    );
 
 
 
     setTimeout(()=>{
 
-
         particle.remove();
 
-
-    },11000);
+    },10000);
 
 
 }
 
 
 
-setInterval(createParticle,250);
+setInterval(
+    createParticle,
+    300
+);
 
 
 
@@ -176,10 +183,10 @@ setInterval(createParticle,250);
 // ===============================
 
 
-const elements =
+const animatedElements =
 document.querySelectorAll(
 
-".card, .stat-card, .profile-card, .mission-box"
+".card, .stat-card, .mission-box"
 
 );
 
@@ -192,13 +199,15 @@ new IntersectionObserver((entries)=>{
 entries.forEach(entry=>{
 
 
-if(entry.isIntersecting){
+    if(entry.isIntersecting){
 
 
-entry.target.classList.add("show");
+        entry.target.classList.add(
+            "show"
+        );
 
 
-}
+    }
 
 
 });
@@ -214,23 +223,10 @@ threshold:0.15
 
 
 
-elements.forEach(element=>{
+animatedElements.forEach(element=>{
 
 
-element.style.opacity="0";
-
-
-element.style.transform=
-"translateY(50px)";
-
-
-
-element.style.transition=
-"all .8s ease";
-
-
-
-observer.observe(element);
+    observer.observe(element);
 
 
 });
@@ -248,42 +244,41 @@ observer.observe(element);
 // ===============================
 
 
-
-document.querySelectorAll("a[href^='#']")
+document
+.querySelectorAll("a[href^='#']")
 .forEach(link=>{
 
 
-link.addEventListener("click",(e)=>{
+    link.addEventListener(
+    "click",
+    (e)=>{
 
 
-e.preventDefault();
-
-
-
-const target =
-
-document.querySelector(
-
-link.getAttribute("href")
-
-);
+        e.preventDefault();
 
 
 
-if(target){
+        const section =
+        document.querySelector(
+        link.getAttribute("href")
+        );
 
 
-target.scrollIntoView({
 
-behavior:"smooth"
-
-});
+        if(section){
 
 
-}
+            section.scrollIntoView({
+
+                behavior:"smooth"
+
+            });
 
 
-});
+        }
+
+
+    });
 
 
 });
@@ -297,31 +292,30 @@ behavior:"smooth"
 
 
 // ===============================
-// EFECTO PARALLAX
+// PARALLAX DEL FONDO
 // ===============================
 
 
-document.addEventListener("mousemove",(e)=>{
+document.addEventListener(
+"mousemove",
+(e)=>{
 
 
 const x =
-
 (e.clientX /
 window.innerWidth - .5)
-* 20;
+* 15;
 
 
 
 const y =
-
 (e.clientY /
 window.innerHeight - .5)
-* 20;
+* 15;
 
 
 
 document.body.style.backgroundPosition =
-
 `${50+x}% ${50+y}%`;
 
 
@@ -336,30 +330,36 @@ document.body.style.backgroundPosition =
 
 
 // ===============================
-// EFECTO DE TITULO
+// EFECTO TITULO
 // ===============================
 
 
 const title =
-document.querySelector(".profile-info h1");
+document.querySelector(
+".profile-info h1"
+);
 
 
 
 if(title){
 
 
-title.addEventListener("mouseenter",()=>{
+title.addEventListener(
+"mouseenter",
+()=>{
 
 
 title.style.textShadow =
-"0 0 40px #00c8ff";
+"0 0 45px #00c8ff";
 
 
 });
 
 
 
-title.addEventListener("mouseleave",()=>{
+title.addEventListener(
+"mouseleave",
+()=>{
 
 
 title.style.textShadow =
